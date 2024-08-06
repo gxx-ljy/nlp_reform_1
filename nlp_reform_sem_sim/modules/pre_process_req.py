@@ -48,8 +48,7 @@ def process_events_in_quotes(req):
                         {'OP': '+'},
                         {'ORTH': "'"}
                         ]
-    #matcher_quotes.add("Action", None, quotes_pattern)
-    #matcher_quotes.add("Action", None, quotes_pattern_2)
+    
     matcher_quotes.add("Action", [quotes_pattern])
     matcher_quotes.add("Action", [quotes_pattern_2])
     matches_quotes = matcher_quotes(doc)

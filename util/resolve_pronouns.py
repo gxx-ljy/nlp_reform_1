@@ -94,7 +94,7 @@ def resolve_pronouns(req):
                         pattern_subj = [
                             {'ORTH': subj_token.text},
                         ]
-                matcher.add("Action", None, pattern_subj)
+                matcher.add("Action", [pattern_subj])
                 matches = matcher(doc)
 
                 for match_id, start, end in matches:

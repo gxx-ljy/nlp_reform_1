@@ -29,7 +29,7 @@ def get_action_constraint(nlp, doc, action_type):
                                  {'POS': 'NOUN', 'OP': '+'},
                                  {'POS': 'ADJ', 'OP': '*'},
                                  ]
-        matcher_compound.add("Action", None, compound_noun_pattern)
+        matcher_compound.add("Action", [compound_noun_pattern])
         matches = matcher_compound(doc)
         comp_noun_list = []
         if matches:
@@ -113,7 +113,7 @@ def get_action_and_action_symbol(nlp, doc):
                {'OP': '?'},
                {'POS': 'NOUN', 'OP': '+', 'IS_ALPHA': True},
                ]
-    matcher.add("Action", None, pattern)
+    matcher.add("Action", [pattern])
     matches = matcher(doc)
     for match_id, start, end in matches:
         span = doc[start:end]  # The matched span
@@ -184,14 +184,14 @@ def get_action_and_action_symbol(nlp, doc):
                              {'ORTH': 'not', 'OP': '?'},
                              # {'POS': 'ADJ', 'ORTH': {"REGEX": '$'}, "_": {"is_domain_token": False}}
                              ]
-    matcher_bool_action.add("Action", None, bool_action_pattern)
-    matcher_bool_action.add("Action", None, bool_action_pattern_2)
-    matcher_bool_action.add("Action", None, bool_action_pattern_3)
-    matcher_bool_action.add("Action", None, bool_action_pattern_4)
-    matcher_bool_action.add("Action", None, bool_action_pattern_5)
-    matcher_bool_action.add("Action", None, bool_action_pattern_6)
-    matcher_bool_action.add("Action", None, bool_action_pattern_7)
-    matcher_bool_action.add("Action", None, bool_action_pattern_8)
+    matcher_bool_action.add("Action", [bool_action_pattern])
+    matcher_bool_action.add("Action", [bool_action_pattern_2])
+    matcher_bool_action.add("Action", [bool_action_pattern_3])
+    matcher_bool_action.add("Action", [bool_action_pattern_4])
+    matcher_bool_action.add("Action", [bool_action_pattern_5])
+    matcher_bool_action.add("Action", [bool_action_pattern_6])
+    matcher_bool_action.add("Action", [bool_action_pattern_7])
+    matcher_bool_action.add("Action", [bool_action_pattern_8])
     matches = matcher_bool_action(doc)
     add_token = []
     add_obj = []

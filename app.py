@@ -58,3 +58,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# streamlit run D:/codes/nlp_reform_1/app.py

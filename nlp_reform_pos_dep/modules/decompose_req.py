@@ -137,9 +137,9 @@ def decompose_MultipleCond(req):
                {'OP': '*'},
                {'ORTH': {"REGEX": 'if|when|while|\.|,'}},
                ]
-    matcher.add("Action", None, pattern)
-    matcher.add("Action", None, pattern_2)
-    matcher.add("Action", None, pattern_3)
+    matcher.add("Action", [pattern])
+    matcher.add("Action", [pattern_2])
+    matcher.add("Action", [pattern_3])
     matches = matcher(doc)
     sub_clauses = []
     for match_id, start, end in matches:
@@ -201,7 +201,7 @@ def decompose_Between(req):
         {'ORTH': {"REGEX": 'and|AND'}},
         {},
     ]
-    matcher.add("Action", None, pattern)
+    matcher.add("Action", [pattern])
     matches = matcher(doc)
 
     sub = ''
@@ -395,7 +395,7 @@ def decompose_NPConj(decomposed_req):
                 {'OP': '*'},
                 {'ORTH': acomp_obj_end},
             ]
-            matcher.add("Action", None, pattern_obj_acomp)
+            matcher.add("Action", [pattern_obj_acomp])
 
         if acomp_obj_mod:
             pattern_obj_acomp = [
@@ -403,10 +403,10 @@ def decompose_NPConj(decomposed_req):
                 {'OP': '*'},
                 {'ORTH': acomp_obj_end},
             ]
-            matcher.add("Action", None, pattern_obj_acomp)
+            matcher.add("Action", [pattern_obj_acomp])
 
-        matcher.add("Action", None, pattern_subj)
-        matcher.add("Action", None, pattern_obj)
+        matcher.add("Action", [pattern_subj])
+        matcher.add("Action", [pattern_obj])
         matches = matcher(doc)
 
         for match_id, start, end in matches:
@@ -427,7 +427,7 @@ def decompose_NPConj(decomposed_req):
                 {'OP': '*'},
                 {'DEP': 'pobj'}
             ]
-            matcher.add("Action", None, pattern_obj_1)
+            matcher.add("Action", [pattern_obj_1])
             matches = matcher(doc)
             two_objects_flag = 0
             if matches:
@@ -520,9 +520,9 @@ def decompose_RootConj(decomposed_req):
             {'OP': '*'},
             {'ORTH': conj},
         ]
-        matcher.add("Action", None, pattern)
-        matcher_root_cconj.add("Action", None, pattern_root_cconj)
-        matcher_subj_conj.add("Action", None, pattern_subj_conj)
+        matcher.add("Action", [pattern])
+        matcher_root_cconj.add("Action", [pattern_root_cconj])
+        matcher_subj_conj.add("Action", [pattern_subj_conj])
         matches = matcher(doc)
         matches_root_cconj = matcher_root_cconj(doc)
         matcher_subj_conj = matcher_subj_conj(doc)

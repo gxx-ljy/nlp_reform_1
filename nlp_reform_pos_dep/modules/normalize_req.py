@@ -44,12 +44,12 @@ def normalize_req(nlp, decomposed_sub_req):
                     {'POS': 'DET', 'OP': '?'},
                     {'POS': 'NOUN', 'OP': '+'}
                     ]
-        matcher.add("Action", None, pattern)
-        matcher.add("Action", None, pattern_2)
-        matcher.add("Action", None, pattern_3)
-        matcher.add("Action", None, pattern_4)
-        matcher.add("Action", None, pattern_5)
-        matcher.add("Action", None, pattern_6)
+        matcher.add("Action", [pattern])
+        matcher.add("Action", [pattern_2])
+        matcher.add("Action", [pattern_3])
+        matcher.add("Action", [pattern_4])
+        matcher.add("Action", [pattern_5])
+        matcher.add("Action", [pattern_6])
         matches = matcher(doc)
         sub_clause_list = []
         if matches:
@@ -97,7 +97,7 @@ def normalize_req(nlp, decomposed_sub_req):
                           {'OP': '+'},
                           {'ORTH': '"'}
                          ]
-        matcher_quotes.add("Action", None, quotes_pattern)
+        matcher_quotes.add("Action", [quotes_pattern])
         matches_quotes = matcher_quotes(doc)
         if matches_quotes:
             for match_id, start, end in matches_quotes:

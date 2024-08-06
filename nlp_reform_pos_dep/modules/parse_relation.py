@@ -171,7 +171,7 @@ def parse_relation_comparative(nlp, norm_req, syntax, comp_symbol):
     left_pattern = [{'DEP': 'nsubj'},
                     {'DEP': 'ROOT'}
                     ]
-    matcher.add("Action", None, left_pattern)
+    matcher.add("Action", [left_pattern])
     matches = matcher(doc)
     if matches:
         for match_id, start, end in matches:
@@ -192,9 +192,9 @@ def parse_relation_comparative(nlp, norm_req, syntax, comp_symbol):
                        {'DEP': 'attr'}
                        ]
 
-    matcher_right.add("Action", None, right_pattern)
-    matcher_right.add("Action", None, right_pattern_2)
-    matcher_right.add("Action", None, right_pattern_3)
+    matcher_right.add("Action", [right_pattern])
+    matcher_right.add("Action", [right_pattern_2])
+    matcher_right.add("Action", [right_pattern_3])
     matches_right = matcher_right(doc)
     if matches_right:
         for match_id, start, end in matches_right:
